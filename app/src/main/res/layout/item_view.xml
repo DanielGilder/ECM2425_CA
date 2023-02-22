@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/recipeTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:text="Recipe Title"
+        android:textSize="20sp"
+        android:layout_centerHorizontal="true"
+
+
+
+        />
+
+    <Button
+        android:layout_width="90dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="4dp"
+        android:id="@+id/recipeButton"
+        android:text="View Recipe"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:textSize="15sp" />
+
+    <ImageView
+        android:layout_width="60sp"
+        android:layout_height="60sp"
+        android:layout_centerVertical="true"
+        android:id="@+id/recipeImage"
+        />
+
+</RelativeLayout>

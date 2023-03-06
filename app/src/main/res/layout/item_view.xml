@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/black"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
         android:id="@+id/recipeTitle"
@@ -9,7 +12,8 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:text="Recipe Title"
-        android:textSize="20sp"
+        android:textColor="#ffffff"
+        android:textSize="15dp"
         android:layout_centerHorizontal="true"
 
 
@@ -26,11 +30,13 @@
         android:layout_centerVertical="true"
         android:textSize="15sp" />
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="60sp"
         android:layout_height="60sp"
         android:layout_centerVertical="true"
         android:id="@+id/recipeImage"
+        app:civ_border_width="17px"
+        app:civ_border_color="@color/green"
         />
 
 </RelativeLayout>

@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
     <item
         android:id="@+id/newRecipes"
+
+        android:state_enabled="false"
         android:title="New Recipes"
         />
 
+
     <item
         android:id="@+id/savedRecipes"
+        android:state_enabled="false"
         android:title="Saved Recipes"
         />
 

@@ -43,24 +43,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        final Handler handler = new Handler();
-        Runnable refresh = new Runnable() {
-            @Override
-            public void run() {
-// data request
-                handler.postDelayed(this, 5000);
-            }
-        };
-        handler.postDelayed(refresh, 5000);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
 
-        //List<Item> items = getRecipes();
-       // items.add(new Item("","Best Food Sites", "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F44%2F2022%2F11%2F17%2Farticle_291139_the-top-10-healthiest-foods-for-kids_-02.jpg&q=60","https://www.chefspencil.com/the-best-20-cooking-websites/", ""));
-        List<Item> items = getRecipes();
+       List<Item> items = getRecipes();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(new MyAdapter((getApplicationContext()),items));
 
@@ -95,47 +84,6 @@ public class MainActivity extends AppCompatActivity {
 
         List<Item> items = new ArrayList<Item>();
         items.add(new Item("","Best Food Sites", "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F44%2F2022%2F11%2F17%2Farticle_291139_the-top-10-healthiest-foods-for-kids_-02.jpg&q=60","https://www.chefspencil.com/the-best-20-cooking-websites/", ""));
-        ExecutorService executor = Executors.newSingleThreadExecutor();
-        Handler handler = new Handler(Looper.getMainLooper());
-
-
-
-
-        executor.execute(new Runnable() {
-                             @Override
-                             public void run() {
-                                 handler.post(new Runnable() {
-                                     @Override
-                                     public void run() {
-                                         FirebaseFirestore db = FirebaseFirestore.getInstance();
-                                         db.collection("recipes")
-                                                 .get()
-                                                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                                                     @Override
-                                                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                                         if (task.isSuccessful()) {
-                                                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                                                 String id = document.getId();
-                                                                 String title = document.getString("RecipeTitle");
-                                                                 String imageURL = document.getString("imageURL");
-                                                                 String recipeURL = document.getString("recipeURL");
-                                                                 String description = document.getString("description");
-
-                                                                 items.add(new Item(id, title, imageURL, recipeURL, description));
-                                                             }
-                                                         } else {
-                                                             Log.w(TAG, "Error getting documents.", task.getException());
-                                                         }
-
-                                                     } } );
-                                     }
-                                 });
-                             }
-                         }
-
-
-
-        );
 
         return items;
     }
